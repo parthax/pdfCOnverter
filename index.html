@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParthX</title>
+</head>
+<style>
+    *{text-decoration: none;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+        /* background: #4070f4; */
+        background: linear-gradient( to right, #ff512f , #dd2476);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mainbody{
+        width: 500px;
+        height: 400px;
+        background: whitesmoke;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(85, 83, 83, 0.541);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .image{
+        margin-top: 20px;
+        max-width: 450px;
+        max-height: 300px;
+        outline: 2px dashed #cacaca;
+        box-shadow: 2px 2px 5px rgba(85, 83, 83, 0.541);
+        margin: 20px;
+    
+      
+    }
+    .btn{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+    }
+     a{
+        width: 150px;;
+        height: 40px;
+        border-radius: 10px;
+        /* background: rgb(29, 107, 224); */
+        background: linear-gradient( to right, #ff512f , #dd2476);
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-right: 20px;
+        box-shadow: 2px 2px 5px rgba(85, 83, 83, 0.541);
+
+    }
+ 
+   
+
+    input{
+       display: none;
+    }
+  
+</style>
+<body>
+    <div class="mainbody">
+      <img src="png.png" alt="error" class="image" >
+      <div class="btn" ><div class="btn1"><a href="#" >CONVERT to PDF</a></div>
+      <div ><a href="#"class="btn2" onclick="Myfunction()">CHOOSE FILE</a></div>
+      <input type="file" name="" id="file" accept=".png,.jpg,.jpge">
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha512-cLuyDTDg9CSseBSFWNd4wkEaZ0TBEpclX0zD3D6HjI19pO39M58AgJ1SjHp6c7ZOp0/OCRcC2BCvvySU9KJaGw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+   const btn1=document.querySelector(".btn1");
+   const btn2=document.querySelector(".btn2");
+   const InputFile=document.querySelector("#file");
+   const img=document.querySelector("img");
+   
+   
+   
+   function Myfunction(){
+       InputFile.click();
+       
+       
+    } 
+    
+    const load=()=>{
+        let file =InputFile.files[0];
+        if(!file) return;
+        img.src=URL.createObjectURL(file)
+        // console.log(file);
+        
+        
+        }
+        InputFile.addEventListener("change",load);
+        
+        btn1.addEventListener("click",()=>{
+            
+            // var doc=new jsPDF();
+            var doc = new jsPDF('p','px','a4');
+            var width=img.width;
+            var height=img.height;
+            var Name=name.textContent;
+            name.textContent=file.name;
+           
+            
+
+        if(width>692){
+            width=650;
+            doc.addImage(img,10,10, width,height)
+        doc.save("generated pdf")
+
+        }
+        else{
+            doc.addImage(img,10,10, width,height)
+        doc.save("generated pdf")
+
+        }
+
+    
+    
+
+
+
+        })
+        
+        
+
+    </script>
+</body>
+</html>
